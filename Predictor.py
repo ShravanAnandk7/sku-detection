@@ -5,21 +5,14 @@ Last updated 09 Jan 2022
 """
 #%%
 import os
-from unittest.util import sorted_list_difference
 import numpy as np
 import pandas as pd
 from functools import partial
 from cv2 import cv2
 import json
-import tensorflow as tf
-import tensorflow.keras.utils as KU
 import tensorflow.keras.layers as KL
 import tensorflow.keras.models as KM
-import tensorflow.keras.losses as KLo
-import tensorflow.keras.optimizers as KO
 import tensorflow.keras.backend as K
-from tensorflow.python.keras.layers.pooling import GlobalAveragePooling2D
-from imgaug import augmenters as arg
 BASE_DIR    = os.path.dirname(__file__)
 os.chdir(BASE_DIR)
 # PARAMTERS
@@ -29,7 +22,7 @@ INPUT_SHAPE     =  299
 EMBEDDING_SIZE  =  32
 #%% Build network model
 def pre_process(image):
-    image = cv2.resize(image,(INPUT_SHAPE, INPUT_SHAPE))
+    # image = cv2.resize(image,(INPUT_SHAPE, INPUT_SHAPE))
     image = image/127.5 -1
     return image
 def euclidean_distance(x,y):
